@@ -1,5 +1,5 @@
-import Fastify from "fastify";
 import dotenv from "dotenv";
+import Fastify from "fastify";
 
 dotenv.config();
 
