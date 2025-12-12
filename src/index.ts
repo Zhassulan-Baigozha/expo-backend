@@ -1,15 +1,17 @@
+// src/index.ts
 import dotenv from "dotenv";
-import Fastify from "fastify";
+import express from "express";
 
 dotenv.config();
 
-const app = Fastify({ logger: true });
+const app = express();
 
-app.get("/", async () => ({ status: "Hello Word" }));
+app.get("/", (_req, res) => {
+	res.json({ status: "Hello World" });
+});
 
-app.listen({ port: Number(process.env.PORT) || 8080 }, (err) => {
-  if (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
+const port = Number(process.env.PORT) || 8080;
+
+app.listen(port, "0.0.0.0", () => {
+	console.log(`Server is running on port ${port}`);
 });
