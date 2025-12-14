@@ -22,6 +22,15 @@ app.get("/health", async (_req, res) => {
 	res.json({ ok: true, db: rows[0] });
 });
 
+app.get("/db-check", async (_req, res) => {
+	try {
+		const { rows } = await pool.query("SELECT now()");
+		res.json({ dbTime: rows[0] });
+	} catch (err) {
+		res.status(500).json({ error: "DB connection failed" });
+	}
+});
+
 // 🔥 подключаем роутер
 app.use("/customers", customersRouter);
 

@@ -2,18 +2,23 @@
 
 ## 🚀 Scripts
 
-### run dev mode
-```bash
-ts-node-dev --respawn --transpile-only src/index.ts
-```
-
 ### run build
 ```bash
-tsc
+yarn build
+```
+
+### run dev mode
+```bash
+yarn dev
 ```
 
 ### start prod
 ```bash
-node dist/index.js
+yarn start
+```
+
+### записать файлы в отдельный файл src_all.txt
+```bash
+yarn dump:src
 ```
 

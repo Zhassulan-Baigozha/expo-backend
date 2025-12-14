@@ -124,4 +124,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// GET all customers
+router.get("/", async (_req, res) => {
+  try {
+    const { rows } = await pool.query(
+      "SELECT id, iin, name, surname FROM customers ORDER BY id"
+    );
+
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Database error" });
+  }
+});
+
 export const customersRouter = router;
