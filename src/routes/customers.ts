@@ -1,3 +1,4 @@
+// src/routes/customers.ts
 import { Router } from "express";
 import { pool } from "../db";
 
@@ -30,6 +31,7 @@ router.get("/:id", async (req, res) => {
 
 // CREATE customer
 router.post("/", async (req, res) => {
+  console.log("Creating customer with data:", req.body);
   const { iin, name, surname } = req.body;
 
   if (!iin || !name || !surname) {
