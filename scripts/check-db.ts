@@ -1,5 +1,4 @@
-// check-db.ts
-// npx ts-node ./scripts/check-db.ts
+// scripts/check-db.ts
 import dotenv from "dotenv";
 
 dotenv.config();

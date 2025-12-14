@@ -5,6 +5,7 @@
   "license": "MIT",
   "description": "",
   "scripts": {
+    "check:db": "ts-node ./scripts/check-db.ts",
     "dump:files": "bash scripts/dump-src.sh",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",

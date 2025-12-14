@@ -19,6 +19,10 @@ yarn start
 
 ### записать файлы в отдельный файл src_all.txt
 ```bash
-yarn dump:src
+yarn dump:files
 ```
 
+### проверить подключение к базе данных
+```bash
+yarn check:db
+```

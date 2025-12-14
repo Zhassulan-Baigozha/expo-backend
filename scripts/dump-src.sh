@@ -1,4 +1,4 @@
-# scripts/dump-src.sh вот сюда добавь .env файл
+# scripts/dump-src.sh
 #!/usr/bin/env bash
 set -e
 
