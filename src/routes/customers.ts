@@ -1,6 +1,7 @@
 // src/routes/customers.ts
 import { Router } from "express";
 import { pool } from "../db";
+import { prisma } from "../lib/prisma";
 
 const router = Router();
 
@@ -127,6 +128,12 @@ router.delete("/:id", async (req, res) => {
 // GET all customers
 router.get("/", async (_req, res) => {
   try {
+    const allUsers = await prisma.customers.findMany();
+    const safeUsers = allUsers.map(u => ({
+      ...u,
+      id: u.id.toString(),
+    }));
+    console.log('All users:', JSON.stringify(safeUsers, null, 2));
     const { rows } = await pool.query(
       "SELECT id, login, name, surname FROM customers ORDER BY id"
     );

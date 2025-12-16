@@ -22,10 +22,22 @@ dump_file () {
 
 dump_dir () {
   local dir="$1"
-  find "$dir" -type f | sort | while read -r file; do
-    dump_file "$file"
-  done
+  local exclude="$2"
+
+  if [ -n "$exclude" ]; then
+    find "$dir" \
+      -path "$exclude" -prune -o \
+      -type f -print
+  else
+    find "$dir" -type f -print
+  fi \
+  | sort | while read -r file; do
+      dump_file "$file"
+    done
 }
+
+# 📦 README.md
+[ -f README.md ] && dump_file "README.md"
 
 # 📦 package.json
 [ -f package.json ] && dump_file "package.json"
@@ -36,10 +48,13 @@ dump_dir () {
 # 📄 .env
 [ -f .env ] && dump_file ".env"
 
-# 📂 src
-[ -d src ] && dump_dir "src"
-
 # 📂 scripts
 [ -d scripts ] && dump_dir "scripts"
 
-echo "✔ dumped: package.json, tsconfig.json, .env, src/, scripts/ → $OUT"
+# 📂 prisma
+[ -d prisma ] && dump_dir "prisma"
+
+# 📂 src (исключаем Prisma client)
+[ -d src ] && dump_dir "src" "src/generated/prisma"
+
+echo "✔ dumped: files → $OUT"
