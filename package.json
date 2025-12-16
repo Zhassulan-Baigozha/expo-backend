@@ -5,8 +5,9 @@
   "license": "MIT",
   "description": "",
   "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "prisma:generate": "prisma generate",
-    "check:db": "ts-node ./scripts/check-db.ts",
     "dump:db": "bash scripts/dump-db.sh",
     "dump:files": "bash scripts/dump-files.sh",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
@@ -23,6 +24,7 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.9",
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.2",
     "@types/pg": "^8.16.0",
