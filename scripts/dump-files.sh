@@ -1,8 +1,16 @@
-# scripts/dump-src.sh
+# scripts/dump-files.sh
 #!/usr/bin/env bash
 set -e
 
-OUT="src_all.txt"
+# 📁 Папка для дампов
+DUMPS_DIR="dump"
+mkdir -p "$DUMPS_DIR"
+
+# 📅 Дата в формате YYYY.MM.DD
+DATE=$(date +"%Y.%m.%d")
+
+# 📄 Итоговый файл
+OUT="$DUMPS_DIR/${DATE}-dump-files.txt"
 > "$OUT"
 
 dump_file () {
