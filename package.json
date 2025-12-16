@@ -10,7 +10,7 @@
     "dump:db": "bash scripts/dump-db.sh",
     "dump:files": "bash scripts/dump-files.sh",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "yarn prisma:generate && tsc",
+    "build": "prisma generate && tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],
