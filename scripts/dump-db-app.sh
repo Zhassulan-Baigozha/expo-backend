@@ -17,17 +17,7 @@ DATE=$(date +"%Y.%m.%d")
 DUMPS_DIR="dump"
 mkdir -p "$DUMPS_DIR"
 
-SYSTEM_DUMP="$DUMPS_DIR/$DATE-dump-db-system.sql"
 APP_DUMP="$DUMPS_DIR/$DATE-dump-db-app.sql"
-
-echo "📦 Dumping Supabase system schemas..."
-pg_dump \
-  "$DATABASE_URL" \
-  --exclude-schema=public \
-  --format=plain \
-  --no-owner \
-  --no-acl \
-  -f "$SYSTEM_DUMP"
 
 echo "📦 Dumping application schema (public)..."
 pg_dump \
@@ -38,6 +28,4 @@ pg_dump \
   --no-acl \
   -f "$APP_DUMP"
 
-echo "✅ Done!"
-echo "🧱 System dump: $SYSTEM_DUMP"
-echo "📊 App dump:    $APP_DUMP"
+echo "✅ Done! App dump: $APP_DUMP"
